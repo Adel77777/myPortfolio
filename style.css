@@ -124,3 +124,185 @@ section{
     margin: 0 auto;
     width: 100%;
 }
+.intro-label {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+h1 {
+    font-family: var(--sans);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.2;
+    font-weight: 600;
+    color: #ddeeff;
+    margin-bottom: 1.4rem;
+}    
+.intro-sub{
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 480px;
+    margin-bottom: 2rem;
+}
+.intro-btns{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.btn-solid{
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--cyan);
+    padding: 0.7rem 1.5rem;
+    border-radius: 2px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.btn-solid:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+.btn-line{
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--muted);
+    border-radius: 2px;
+    padding: 0.7rem 1.5rem;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.btn-line:hover {
+    border-color: var(--cyan)
+    color: var(--cyan);
+    transform: translateY(-2px);
+}
+
+/* ── ABOUT ── */
+
+.about-body {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: start;
+
+}
+.about-text p {
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+.about-text p:first-child {
+    color: var(--text);
+}
+.chip-row {
+    display: flex;
+    flex-wrap:wrap;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+}
+.chip-row span {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    border: 1px solid rgba(0,212,245,0.2);
+    background: rgba(0,212,245,0.04);
+    padding: 0.3rem 0.5rem;
+    border-radius: 2px;
+}
+.about-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    min-width: 130px;
+}
+.mini-card {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.mini-card strong {
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: var(--cyan);
+  line-height: 1;
+  text-transform: uppercase;
+}
+.mini-card span {
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+}
+
+/* ── EDUCATION ── */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 1px solid var(--line);
+    margin-left: 0.5rem;
+    padding-left: 0;
+}
+.tl-item {
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+}
+.tl-item:last-child {
+    padding-bottom: 0;
+}
+.tl-dot {
+    width: 9px;
+    height: 9px;
+    min-width: 9px;
+    background: var(--cyan);
+    border-radius: 50%;
+    margin-left: -5px;
+    margin-top: 0.5rem;
+    box-shadow: 0 0 8px var(--cyan);
+}
+.tl-body {
+    flex: 1;
+}
+.tl-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.3rem;
+}
+.tl-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ddeeff;
+  line-height: 1.4;
+}
+.tl-year {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--gold);
+  white-space: nowrap;
+  padding-top: 0.15rem;
+}
+
+.tl-place {
+  font-size: 0.8rem;
+  color: var(--cyan);
+  margin-bottom: 0.2rem;
+  font-family: var(--mono);
+}
+

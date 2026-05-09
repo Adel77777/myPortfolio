@@ -78,11 +78,14 @@ nav {
     color: var(--muted);
     text-decoration: none;
     position: relative;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
     transition: color 0.2s;
 }
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--cyan);
+    border-bottom-color: var(--cyan);
 }
 
 
@@ -379,4 +382,51 @@ h1 {
     border: 1px solid var(--line);
     padding: 0.2rem 0.5rem;
     border-radius: 2px;
+}
+
+/* ── CONTACT ── */
+
+.contact-inner {
+    border-bottom: none;
+}
+h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 600;
+    color: #ddeeff;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.01em;
+}
+.contact-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    max-width: 450px;
+}
+.contact-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+.contact-row a {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--cyan);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+}
+.contact-row a:hover {
+    border-bottom-color: var(--cyan);
+}
+
+footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1rem;
 }

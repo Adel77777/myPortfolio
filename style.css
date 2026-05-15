@@ -449,14 +449,84 @@ footer {
     color: var(--muted);
     letter-spacing: 0.1rem;
 }
+
+/* ── NAV TOGGLE (MOBILE) ── */
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+}
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--cyan);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* ── RESPONSIVE ── */
-@media (max-width: 700px) {
+
+@media (max-width: 900px) {
+  .projects-grid { grid-template-columns: 1fr; }
   .about-body { grid-template-columns: 1fr; }
   .about-cards { flex-direction: row; flex-wrap: wrap; min-width: unset; }
-  .project-grid { grid-template-columns: 1fr; }
-  .tl-top { flex-direction: column; gap: 0.2rem; }
 }
-@media (max-width: 480px) {
-  .nav-links { gap: 1.2rem; }
-  .nav-links a { font-size: 0.65rem; }
+@media (max-width: 700px) {
+  .nav-toggle { display: flex; }
+   nav { padding: 1rem 4vw; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    position: fixed;
+    top: 57px; /* height of nav */
+    left: 0; right: 0;
+    background: rgba(7, 17, 31, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 0; 
+}
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 0.9rem 6vw;
+    font-size: 0.8rem;
+    border-bottom: none;
+  }
+   .nav-links a:hover,
+   .nav-links a.active {
+        background: rgba(0, 229, 255, 0.05);
+        color: var(--cyan);
+        border-bottom: none;
+    }
+  .section-inner { padding: 4rem 4vw; }
+
+  #intro { padding: 0 4vw; }
+  .intro-btns { flex-direction: column; }
+  .btn-solid, .btn-line { text-align: center; }
+
+  .about-body { grid-template-columns: 1fr; gap: 2rem; }
+  .about-cards { flex-direction: row; flex-wrap: wrap; min-width: unset; }
+  .mini-card { flex: 1; min-width: 80px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .pcard { padding: 1.2rem; }
+  .tl-top { flex-direction: column; gap: 0.2rem; }
+  .contact-row { flex-direction: column; gap: 1rem; }
+}
+@media (max-width: 400px) {
+  .logo { font-size: 0.85rem; }
+  .nav-links { gap: 0.8rem; }
+  .nav-links a { font-size: 0.6rem; letter-spacing: 0.06em; }
+  .chip-row span { font-size: 0.6rem; }
 }

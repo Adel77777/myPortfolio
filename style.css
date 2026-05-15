@@ -476,12 +476,12 @@ footer {
 
 /* ── RESPONSIVE ── */
 
-@media (max-width: 900px) {
+@media (min-width: 769px) and (max-width: 900px) {
   .projects-grid { grid-template-columns: 1fr; }
   .about-body { grid-template-columns: 1fr; }
   .about-cards { flex-direction: row; flex-wrap: wrap; min-width: unset; }
 }
-@media (max-width: 700px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .nav-toggle { display: flex; }
    nav { padding: 1rem 4vw; }
   .nav-links {
@@ -524,7 +524,7 @@ footer {
   .tl-top { flex-direction: column; gap: 0.2rem; }
   .contact-row { flex-direction: column; gap: 1rem; }
 }
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .logo { font-size: 0.85rem; }
   .nav-links { gap: 0.8rem; }
   .nav-links a { font-size: 0.6rem; letter-spacing: 0.06em; }

@@ -3,6 +3,7 @@
  ===========================================*/
 
  /* PAGES TRANSITIONS */
+
  const links = document.querySelectorAll('nav a, .btn-solid')
  const sections = document.querySelectorAll('section')
 links.forEach(link => {
@@ -58,6 +59,8 @@ window.addEventListener('wheel', e => {
     else goToSection(current - 1);               // scroll up → previous
 });
 
+//////////////////////////////////////////////////////////
+
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.querySelector('.nav-links');
@@ -74,3 +77,72 @@ links.forEach(link => {
         navLinks.classList.remove('open');
     });
 });
+
+/*CANVAS BACKGROUND*/
+
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const CYAN  = '0, 229, 255';
+const NODE_COUNT = 40;
+const MAX_DIST = 130;
+
+const nodes = Array.from({ length: NODE_COUNT }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: (Math.random() - 0.5) * 0.4,
+    r: Math.random() > 0.85 ? 3 : 1.5,
+    pulse: Math.random() * Math.PI * 2
+}));
+
+function draw () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    nodes.forEach(n => {
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+        n.pulse += 0.02;
+    })
+
+    // Drawing connections
+    for (let i = 0; i < NODE_COUNT; i++) {
+        for (let j = i + 1; j < NODE_COUNT; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < MAX_DIST) {
+                const alpha = (1 - dist / MAX_DIST) * 0.5;
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(${CYAN},${alpha})`;
+                ctx.lineWidth = 1;
+                ctx.moveTo(nodes[i].x, nodes[i].y);
+                ctx.lineTo(nodes[j].x,nodes[j].y);
+                ctx.stroke();
+            }
+            
+        }
+    }
+
+    // Drawing nodes
+    nodes.forEach(n => {
+        const glow = 0.5 + 0.5 * Math.sin(n.pulse);
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r + glow, 0, Math.PI * 2);
+        ctx.fillStyle = n.r > 2 ? `rgba(${CYAN}, ${0.6 + 0.4 * glow})` : `rgba(${CYAN}, 0.45)`;
+        ctx.fill();
+    })
+    requestAnimationFrame(draw);
+}
+draw();
+
